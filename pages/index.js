@@ -1,24 +1,18 @@
 import MeetupList from "@/components/meetups/MeetupList";
 import { MongoClient } from "mongodb";
+import Head from "next/head";
 
 const HomePage = (props) => {
   return (
     <>
+      <Head>
+        <title>React Meetups</title>
+        <meta name="description" content="Highly Active React Meetups" />
+      </Head>
       <MeetupList meetups={props.meetups} />
     </>
   );
 };
-
-// export async function getServerSideProps(context) {
-//   const req = context.req;
-//   const res = context.res;
-
-//   return {
-//     props: {
-//       meetups: DUMMY_MEETUPS,
-//     },
-//   };
-// }
 
 export async function getStaticProps() {
   const client = await MongoClient.connect(
